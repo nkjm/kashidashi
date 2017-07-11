@@ -3,7 +3,7 @@
 module.exports = class SkillHandlePizzaOrder {
     constructor(bot, event){
         this.clear_context_on_finish = true;
-        
+
         this.required_parameter = {
             pizza: { // ピザのタイプ
                 message_to_confirm: {
@@ -17,6 +17,23 @@ module.exports = class SkillHandlePizzaOrder {
                             { type: "message", label: "マリナーラ", text: "マリナーラ"}
                         ]
                     }
+                },
+                reaction: (error, value, context, resolve, reject) => {
+                    if (error){
+                        bot.change_message_to_confirm("pizza", {
+                            type: "text",
+                            text: "だからマルゲリータかマリナーラのどっちかだと言っとるだろ。"
+                        })
+                    } else {
+                        bot.queue([{
+                            type: "text",
+                            text: `${value}ですね。OK牧場。`
+                        },{
+                            type: "text",
+                            text: `ホーーーウ。`    
+                        }])
+                    }
+                    return resolve();
                 }
             },
             size: { // ピザのサイズ
@@ -38,6 +55,16 @@ module.exports = class SkillHandlePizzaOrder {
                 }
             }
         }
+    }
+
+    parse_pizza(value, context, resolve, reject){
+        if (value.match(/マルゲリータ/) || value.match(/マルガリータ/)){
+            return resolve("マルゲリータ");
+        }
+        if (value.match(/マリナーラ/) || value.match(/まりなーら/)){
+            return resolve("マリナーラ");
+        }
+        return reject();
     }
 
     finish(bot, event, context, resolve, reject){
