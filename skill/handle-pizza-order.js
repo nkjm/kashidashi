@@ -19,7 +19,7 @@ module.exports = class SkillHandlePizzaOrder {
                     }
                 },
                 reaction: (error, value, context, resolve, reject) => {
-                    if (error){
+                    if (value != "" && error){
                         bot.change_message_to_confirm("pizza", {
                             type: "text",
                             text: "だからマルゲリータかマリナーラのどっちかだと言っとるだろ。"
@@ -30,7 +30,7 @@ module.exports = class SkillHandlePizzaOrder {
                             text: `${value}ですね。OK牧場。`
                         },{
                             type: "text",
-                            text: `ホーーーウ。`    
+                            text: `ホーーーウ。`
                         }])
                     }
                     return resolve();
