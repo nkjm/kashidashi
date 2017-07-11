@@ -4,6 +4,15 @@ module.exports = class SkillHandlePizzaOrder {
     constructor(bot, event){
         this.clear_context_on_finish = true;
 
+        this.optional_parameter = {
+            size: { // ピザのサイズ
+                message_to_confirm: {
+                    type: "text",
+                    text: "サイズはお決まりでしょうか？"
+                }
+            }
+        }
+
         this.required_parameter = {
             pizza: { // ピザのタイプ
                 message_to_confirm: {
@@ -27,21 +36,17 @@ module.exports = class SkillHandlePizzaOrder {
                             })
                         }
                     } else {
-                        bot.queue([{
-                            type: "text",
-                            text: `${value}ですね。OK牧場。`
-                        },{
-                            type: "text",
-                            text: `ホーーーウ。`
-                        }])
+                        if (value == "マルゲリータ"){
+                            // マルゲリータは特大しかないのでサイズは聞きません。
+                            bot.queue({
+                                type: "text",
+                                text: "マルゲリータね。サイズは特大しかないから。"
+                            })
+                        } else {
+                            bot.collect("size");
+                        }
                     }
                     return resolve();
-                }
-            },
-            size: { // ピザのサイズ
-                message_to_confirm: {
-                    type: "text",
-                    text: "サイズはお決まりでしょうか？"
                 }
             },
             address: { // お届け先
