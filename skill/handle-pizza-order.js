@@ -19,11 +19,13 @@ module.exports = class SkillHandlePizzaOrder {
                     }
                 },
                 reaction: (error, value, context, resolve, reject) => {
-                    if (value != "" && error){
-                        bot.change_message_to_confirm("pizza", {
-                            type: "text",
-                            text: "だからマルゲリータかマリナーラのどっちかだと言っとるだろ。"
-                        })
+                    if (error){
+                        if (value != ""){
+                            bot.change_message_to_confirm("pizza", {
+                                type: "text",
+                                text: "だからマルゲリータかマリナーラのどっちかだと言っとるだろ。"
+                            })
+                        }
                     } else {
                         bot.queue([{
                             type: "text",
