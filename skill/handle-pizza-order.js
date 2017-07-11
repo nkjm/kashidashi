@@ -2,11 +2,21 @@
 
 module.exports = class SkillHandlePizzaOrder {
     constructor(bot, event){
+        this.clear_context_on_finish = true;
+        
         this.required_parameter = {
             pizza: { // ピザのタイプ
                 message_to_confirm: {
-                    type: "text",
-                    text: "ご注文のピザはお決まりでしょうか？"
+                    type: "template",
+                    altText: "ご注文のピザはお決まりでしょうか？（マルゲリータかマリナーラだぞ。それ以外は入れるなよ。絶対にだ。）",
+                    template: {
+                        type: "buttons",
+                        text: "ご注文のピザはお決まりでしょうか？",
+                        actions: [
+                            { type: "message", label: "マルゲリータ", text: "マルゲリータ"},
+                            { type: "message", label: "マリナーラ", text: "マリナーラ"}
+                        ]
+                    }
                 }
             },
             size: { // ピザのサイズ
