@@ -31,7 +31,7 @@ module.exports = class SkillSurvey {
                         actions: [
                             {type: "message", label: "はい", text: "はい"},
                             {type: "message", label: "いいえ", text: "いいえ"},
-                            {type: "uri", label: "詳しい情報を見る", uri: "https://www.heartis-sc.co.jp/recruit/"}
+                            {type: "uri", label: "詳しい情報を見る", uri: "http://www.heartis-sc.co.jp/recruit/"}
                         ]
                     }
                 },
