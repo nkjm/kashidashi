@@ -155,14 +155,20 @@ module.exports = class SkillKasidasi {
         // User has provided product information so we search for it.
         return oracle.search_product(context.confirmed.product_id_or_name || context.confirmed.product_id || context.confirmed.product_name).then(
             (response) => {
-                if (response.length == 1){
+                let is_availble = false;
+                for (let product of response){
+                    if (product.t_lend_flg == 0){
+                        is_available = true;
+                        context.confirmed.product_serial = product.t_field1;
+                    }
+                }
+                if (is_available){
                     // Available product FOUND.
-                    context.confirmed.product_serial = response[0].t_field1;
                     bot.collect("lend");
                     return resolve();
-                }
-                if (response.length == 0){
+                } else {
                     // Available product NOT FOUND.
+                    context.confirmed.product_serial = response[0].t_field1;
                     let message_text = "残念ながら今貸し出し可能な機器がありません。返却されたらご連絡しましょうか？";
                     return bot.reply({
                         type: "template",
