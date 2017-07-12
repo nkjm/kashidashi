@@ -154,7 +154,7 @@ module.exports = class SkillKasidasi {
                 }
                 if (response.length == 0){
                     // Available product NOT FOUND.
-                    let message_text = "残念ながら今";
+                    let message_text = "残念ながら今貸し出し可能な機器がありません。返却されたらご連絡しましょうか？";
                     return bot.reply({
                         type: "template",
                         altText: message_text,
@@ -162,8 +162,8 @@ module.exports = class SkillKasidasi {
                             type: "buttons",
                             text: message_text,
                             actions: [
-                                {type:"postback", label:"連絡して欲しい", data: `${}が返ってきたら連絡ください`},
-                                {type:"postback", label:"別に必要ない", data: `${}が返ってきても連絡はいりません`}
+                                {type:"postback", label:"連絡して欲しい", data: `返ってきたら連絡ください`},
+                                {type:"postback", label:"別に必要ない", data: `返ってきても連絡はいりません`}
                             ]
                         }
                     }).then(
