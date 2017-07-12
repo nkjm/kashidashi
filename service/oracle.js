@@ -89,6 +89,7 @@ module.exports = class ServiceOracle {
         let headers = {
             "Content-Type": "application/json"
         }
+        console.log(url);
         return request.getAsync({
             url: url,
             headers: headers,

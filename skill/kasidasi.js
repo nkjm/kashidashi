@@ -14,7 +14,7 @@ module.exports = class SkillKasidasi {
                 },
                 reaction: (error, value, context, resolve, reject) => {
                     if (error){
-                        bot.change_message_to_confirm({
+                        bot.change_message_to_confirm("product_id_or_name", {
                             type: "text",
                             text: "お探しの機器はそもそも存在しないようです。品番または品名をお確かめの上再度教えてください。"
                         });
