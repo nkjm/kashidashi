@@ -7,7 +7,7 @@ const URL_BASE = "https://apex.oracle.com/pls/apex/" + process.env.ORACLE_WORKSP
 Promise.promisifyAll(request);
 
 module.exports = class ServiceOracle {
-    static toggle_leng_flag(serial){
+    static toggle_lend_flag(serial){
         let url = URL_BASE + "/product/toggle/" + encodeURIComponent(serial);
         let headers = {
             "Content-Type": "application/json"
