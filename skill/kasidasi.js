@@ -63,6 +63,9 @@ module.exports = class SkillKasidasi {
     }
 
     parse_product_id_or_name(value, context, resolve, reject){
+        if (value === ""){
+            return reject();
+        }
         return oracle.get_product_by_id(value).then(
             (response) => {
                 if (response.length > 0){
@@ -83,6 +86,9 @@ module.exports = class SkillKasidasi {
     }
 
     parse_product_id(value, context, resolve, reject){
+        if (value === ""){
+            return reject();
+        }
         return oracle.get_product_by_id(value).then(
             (response) => {
                 if (response.length > 0){
@@ -95,6 +101,9 @@ module.exports = class SkillKasidasi {
     }
 
     parse_product_name(value, context, resolve, reject){
+        if (value === ""){
+            return reject();
+        }
         return oracle.get_product_by_name(value).then(
             (response) => {
                 if (response.length > 0){
