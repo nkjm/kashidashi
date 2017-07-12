@@ -123,7 +123,7 @@ module.exports = class SkillKasidasi {
                             text: "すみません貸出処理中にエラーが出ました。今日はちょっと無理そうです。"
                         });
                     }
-                }).then(
+                ).then(
                     (response) => {
                         return resolve();
                     }
