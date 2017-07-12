@@ -139,7 +139,7 @@ module.exports = class SkillKasidasi {
 
         // User has not provided any product information.
         if (!context.confirmed.product_id_or_name && !context.confirmed.product_id && !context.confirmed.product_name){
-            bot.collect("product");
+            bot.collect("product_id_or_name");
             return resolve();
         }
 
