@@ -12,7 +12,6 @@ module.exports = class ServiceOracle {
         console.log(url);
         return request.putAsync({
             url: url,
-            headers: headers,
             json: true
         }).then(
             (response) => {
