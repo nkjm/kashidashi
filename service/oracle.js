@@ -9,9 +9,6 @@ Promise.promisifyAll(request);
 module.exports = class ServiceOracle {
     static toggle_lend_flag(serial){
         let url = URL_BASE + "/product/toggle/" + encodeURIComponent(serial);
-        let headers = {
-            "Content-Type": "application/json"
-        }
         console.log(url);
         return request.putAsync({
             url: url,
