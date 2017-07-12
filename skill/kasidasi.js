@@ -160,10 +160,15 @@ module.exports = class SkillKasidasi {
                     if (product.t_lend_flg == 0){
                         is_available = true;
                         context.confirmed.product_serial = product.t_field1;
+                        context.confirmed.product_id = product.t_field2;
+                        context.confirmed.product_name = product.t_field3;
                     }
                 }
                 if (is_available){
                     // Available product FOUND.
+                    let message_text = `${context.confirmed.product_name}のシリアルNo.${context.confirmed.product_serial}が貸し出し可能です。こちらの機器を借りますか？`;
+                    this.optional_parameter.lend.message_to_confirm.altText = message_text;
+                    this.optional_parameter.lend.message_to_confirm.template.text = message_text;
                     bot.collect("lend");
                     return resolve();
                 } else {
