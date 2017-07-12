@@ -155,7 +155,7 @@ module.exports = class SkillKasidasi {
         // User has provided product information so we search for it.
         return oracle.search_product(context.confirmed.product_id_or_name || context.confirmed.product_id || context.confirmed.product_name).then(
             (response) => {
-                let is_availble = false;
+                let is_available = false;
                 for (let product of response){
                     if (product.t_lend_flg == 0){
                         is_available = true;
