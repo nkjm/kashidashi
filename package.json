@@ -9,12 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@line/bot-sdk": "^2.0.0",
     "apiai-promisified": "^1.0.1",
     "bot-express": "0.0.103",
-    "isemail": "^3.0.0",
-    "mecabaas-client": "^1.0.2",
-    "request": "^2.81.0",
-    "restify": "^5.0.0"
+    "request": "^2.81.0"
   }
 }
