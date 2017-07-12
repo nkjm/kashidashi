@@ -7,6 +7,22 @@ const URL_BASE = "https://apex.oracle.com/pls/apex/" + process.env.ORACLE_WORKSP
 Promise.promisifyAll(request);
 
 module.exports = class ServiceOracle {
+    static subscribe(serial, user_id){
+        let url = URL_BASE + "/product/subscribe?serial=" + encodeURIComponent(serial) + "&user_id=" + encodeURIComponent(user_id);
+        console.log(url);
+        return request.putAsync({
+            url: url,
+            json: true
+        }).then(
+            (response) => {
+                if (response.statusCode != 200){
+                    return Promise.reject(new Error("ServiceOracle.subscribe() failed."));
+                }
+                return response;
+            }
+        );
+    }
+
     static toggle_lend_flag(serial){
         let url = URL_BASE + "/product/toggle/" + encodeURIComponent(serial);
         console.log(url);

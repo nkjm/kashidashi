@@ -171,8 +171,8 @@ module.exports = class SkillKasidasi {
                             type: "buttons",
                             text: message_text,
                             actions: [
-                                {type:"postback", label:"連絡して欲しい", data: `返ってきたら連絡ください`},
-                                {type:"postback", label:"別に必要ない", data: `返ってきても連絡はいりません`}
+                                {type:"postback", label:"連絡して欲しい", data: `${context.confirmed.product_serial}が返却されたら教えてください`},
+                                {type:"postback", label:"別に必要ない", data: `通知は必要ありません。`}
                             ]
                         }
                     }).then(
