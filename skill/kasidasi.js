@@ -106,7 +106,7 @@ module.exports = class SkillKasidasi {
         );
     }
 
-    finish(bot, event, cotext, resolve, reject){
+    finish(bot, event, context, resolve, reject){
         // User already specified product and confirmed if he/she wants to get it.
         if (context.confirmed.lend){
             if (context.confirmed.lend == "はい"){
